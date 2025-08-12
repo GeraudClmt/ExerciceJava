@@ -13,9 +13,21 @@ public class Main {
         showMessage("Terminé, avec "+ tripCount + " voyages");
 
     }
+
+    /**
+     *
+     * @param message The message to display in the console
+     */
     public static void showMessage(String message){
         System.out.println(message);
     }
+
+    /**
+     *
+     * @param scanner The input scanner
+     * @param message The message to display when entering data
+     * @return Returns the correct number entered by the user, if it is positive
+     */
     public static int positifNumber(Scanner scanner, String message){
         boolean isNumber = false;
         int positifNumber = 0;
@@ -37,6 +49,12 @@ public class Main {
         return positifNumber;
     }
 
+    /**
+     *
+     * @param totalCardboard Number of boxes to move
+     * @param truckCapacity Number of boxes that can be moved in one truck trip
+     * @return Returns the number of trips for the move
+     */
     public static int countNbVoyage(Integer totalCardboard, Integer truckCapacity){
         int tripCount = 0;
         while(totalCardboard > 0){
