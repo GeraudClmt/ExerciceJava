@@ -7,15 +7,15 @@ public class Main {
         System.out.println("Je vais taider à déménager !!!");
 
         Scanner scanner = new Scanner(System.in);
-        int nbTotalCartons = PositifNumber(scanner, "Combien de cartons avez vous ?");
-        int truckCapacity = PositifNumber(scanner, "Combien de cartons on peut mettre dans votre camion ?");
+        int nbTotalCartons = positifNumber(scanner, "Combien de cartons avez vous ?");
+        int truckCapacity = positifNumber(scanner, "Combien de cartons on peut mettre dans votre camion ?");
         scanner.close();
 
         int nbVoyages = countNbVoyage(nbTotalCartons, truckCapacity);
         System.out.println("Terminé, avec "+ nbVoyages + " voyages");
 
     }
-    public static int PositifNumber(Scanner scanner, String message){
+    public static int positifNumber(Scanner scanner, String message){
         boolean isNumber = false;
         int positifNumber = 0;
 
