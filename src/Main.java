@@ -26,7 +26,7 @@ public class Main {
      *
      * @param scanner The input scanner
      * @param message The message to display when entering data
-     * @return Returns the correct number entered by the user, if it is positive
+     * @return The correct number entered by the user, if it is positive
      */
     public static int positifNumber(Scanner scanner, String message){
         boolean isNumber = false;
@@ -53,7 +53,7 @@ public class Main {
      *
      * @param totalCardboard Number of boxes to move
      * @param truckCapacity Number of boxes that can be moved in one truck trip
-     * @return Returns the number of trips for the move
+     * @return The number of trips for the move
      */
     public static int countNbVoyage(Integer totalCardboard, Integer truckCapacity){
         int tripCount = 0;
