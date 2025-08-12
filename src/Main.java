@@ -1,5 +1,13 @@
 import java.util.Scanner;
+
+/**
+ * Main class for the moving program
+ */
 public class Main {
+    /**
+     *
+     * @param args The arguments passed on the command line
+     */
     public static void main(String[] args) {
         showMessage("Le hello de geraud");
         showMessage("Je vais taider à déménager !!!");
