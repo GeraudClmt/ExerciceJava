@@ -3,46 +3,41 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
         System.out.println("Le hello de geraud");
         System.out.println("Je vais taider à déménager !!!");
+
+        Scanner scanner = new Scanner(System.in);
+        int nbTotalCartons = PositifNumber(scanner, "Combien de cartons avez vous ?");
+        int truckCapacity = PositifNumber(scanner, "Combien de cartons on peut mettre dans votre camion ?");
+        scanner.close();
+
+        int nbVoyages = countNbVoyage(nbTotalCartons, truckCapacity);
+        System.out.println("Terminé, avec "+ nbVoyages + " voyages");
+
+    }
+    public static int PositifNumber(Scanner scanner, String message){
+        boolean isNumber = false;
+        int positifNumber = 0;
+
+        while (!isNumber) {
+            System.out.println(message);
+            if(scanner.hasNextInt()) {
+                positifNumber = scanner.nextInt();
+                if(positifNumber > 0) {
+                    isNumber = true;
+                }else{
+                    System.out.println("Le nombre doit être supérieur à O !");
+                }
+            }else{
+                System.out.println("Ce n'est pas un nombre. Réessayez !");
+                scanner.next();
+            }
+        }
+        return positifNumber;
+    }
+
+    public static int countNbVoyage(Integer nbTotalCartons, Integer truckCapacity){
         int nbVoyages = 0;
-        int nbTotalCartons = 0;
-        int truckCapacity = 0;
-        boolean isNumbernbTotalCartons = false;
-        boolean isNumbertruckCapacity = false;
-
-        while (!isNumbernbTotalCartons) {
-            System.out.println("Combien de cartons avez vous ?");
-            if(input.hasNextInt()) {
-                nbTotalCartons = input.nextInt();
-                if(nbTotalCartons > 0) {
-                    isNumbernbTotalCartons = true;
-                }else{
-                    System.out.println("Le nombre doit être supérieur à O !");
-                }
-            }else{
-                System.out.println("Ce n'est pas un nombre. Réessayez !");
-                input.next();
-            }
-        }
-        while(!isNumbertruckCapacity) {
-            System.out.println("Combien de cartons on peut mettre dans votre camion ?");
-            if(input.hasNextInt()) {
-                truckCapacity = input.nextInt();
-                if(truckCapacity > 0) {
-                    isNumbertruckCapacity = true;
-                }else{
-                    System.out.println("Le nombre doit être supérieur à O !");
-                }
-            }else{
-                System.out.println("Ce n'est pas un nombre. Réessayez !");
-                input.next();
-            }
-        }
-        input.close();
-
         while(nbTotalCartons > 0){
             if(nbTotalCartons >= truckCapacity){
                 nbTotalCartons-=truckCapacity;
@@ -53,7 +48,6 @@ public class Main {
             }
             nbVoyages++;
         }
-        System.out.println("Terminé, avec "+ nbVoyages + " voyages");
-
+        return nbVoyages;
     }
 }
