@@ -1,14 +1,24 @@
 import java.util.Scanner;
-
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 /**
  * Main class for the moving program
  */
 public class Main {
+    private static FileWriter logs;
     /**
      *
      * @param args The arguments passed on the command line
      */
     public static void main(String[] args) {
+        try {
+            logs = new FileWriter("logs.txt", true);
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+
         showMessage("Le hello de geraud");
         showMessage("Je vais taider à déménager !!!");
 
@@ -20,6 +30,12 @@ public class Main {
         int tripCount = countNbVoyage(totalCardboard, truckCapacity);
         showMessage("Terminé, avec "+ tripCount + " voyages");
 
+        try {
+            logs.close();
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     /**
@@ -28,6 +44,16 @@ public class Main {
      */
     public static void showMessage(String message){
         System.out.println(message);
+
+        LocalDateTime nowDateAndTime = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatedNowDateAndTime = nowDateAndTime.format(format);
+
+        try {
+            logs.write(formatedNowDateAndTime + " " + message +"\n");
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -54,6 +80,7 @@ public class Main {
                 scanner.next();
             }
         }
+        showMessage(Integer.toString(positifNumber));
         return positifNumber;
     }
 
